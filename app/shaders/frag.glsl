@@ -1,4 +1,5 @@
 #version 330
+#extension GL_NV_shadow_samplers_cube : enable
 
 // Defines
 #define PI 3.141592

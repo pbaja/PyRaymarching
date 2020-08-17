@@ -2,9 +2,10 @@
 This is me tinkering with Raymarching for fun. This is just a playground and i am not planning to maintain it. Have fun!  
   
 ## Running
-First run `install.sh`, this will create venv directory with python environment, and then install all neccesary dependencies for you. After that you will hopefully be able to just run it with `run.sh`  
+First run `install.sh` on Linux or `install.ps1` on Windows. This will create python environment and install all dependencies into it.  
+After that you will hopefully be able to just run it with `run.sh` or `run.ps1`.
   
-There is also a manual way that should work on Windows too:  
+There is also a manual way that should work:  
 ```
 python3 -m venv venv
 source venv/bin/activate
