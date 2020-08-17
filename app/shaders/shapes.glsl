@@ -9,7 +9,7 @@ float sdPlane(in vec3 pos)
     return pos.y;
 }
 
-vec4 sdUnion(vec4 a, vec4 b)
+vec2 sdUnion(vec2 a, vec2 b)
 {
-    return (a.a < b.a) ? a : b;
+    return (a.x < b.x) ? a : b;
 }

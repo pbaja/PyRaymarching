@@ -33,7 +33,7 @@ class Window:
 
         # Load textures
         texture_list = [
-            (TextureDescription("lab.png"), "Texture"),
+            (TextureDescription("lab.jpg"), "Texture"),
             (TextureDescription(kind="cube", 
                 pos_x="right.png", pos_y="up.png", pos_z="front.png",
                 neg_x="left.png", neg_y="down.png", neg_z="back.png"), "Skybox")
