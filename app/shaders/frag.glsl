@@ -12,6 +12,7 @@ out vec4 out_color;
 
 // Params
 uniform float Time;
+uniform sampler2D Texture;
 
 #include shapes.glsl
 #include raymarching.glsl
@@ -39,6 +40,10 @@ void main()
 
         // Calculate color
         color *= lambert;
+    }
+    else
+    {
+        color = texture2D(Texture, vert_uv).rgb;
     }
 
     // Assign result

@@ -2,7 +2,6 @@ import logging, os, datetime, sys
 from .window import Window
 
 config = {
-    "shaders_path": "app/shaders",
     "version": "1.00"
 }
 

@@ -1,8 +1,8 @@
-import time, os
+import time, os, logging
 import moderngl_window as mglw
 import numpy as np
-from moderngl_window.resources import programs 
-from moderngl_window.meta import ProgramDescription 
+from moderngl_window.resources import programs, textures
+from moderngl_window.meta import ProgramDescription, TextureDescription
 from moderngl_window.conf import settings
 
 
@@ -23,11 +23,30 @@ class Window:
 
         # Setup directories
         shaders_path = os.path.abspath("app/shaders")
+        textures_path = os.path.abspath("app/textures")
         mglw.resources.register_program_dir(shaders_path)
+        mglw.resources.register_texture_dir(textures_path)
 
         # Load program
         prog_desc = ProgramDescription(vertex_shader='vert.glsl', fragment_shader='frag.glsl')
         self.prog = programs.load(prog_desc)
+
+        # Load textures
+        texture_list = [("lab.jpg", "Texture")]
+        idx = 0
+        for filename, name in texture_list:
+            tex = textures.load(TextureDescription(filename))
+            param = self.prog.get(name, None)
+            if param is not None:
+                # Assign texture to slot
+                idx += 1
+                tex.use(idx)
+                # Assign slot to sampler
+                param.value = idx
+                logging.info(f"assigned texture '{filename}' to '{name}'")
+            else:
+                logging.warn(f"skipping unused texture '{filename}'")
+
 
         # Vertices
         vertices = np.array([
@@ -53,6 +72,8 @@ class Window:
         # Parameters
         self.params = {}
         self.params["Time"] = self.prog.get("Time", None)
+
+
         
     def render(self, delta, time):
         if self.params["Time"] is not None: self.params["Time"].value = time
