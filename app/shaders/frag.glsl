@@ -2,9 +2,9 @@
 
 // Defines
 #define PI 3.141592
-#define EPSILON 0.001
+#define EPSILON 0.01
 #define NEAR 0.01
-#define MAX_STEPS 100
+#define MAX_STEPS 200
 
 // Input/output
 in vec2 vert_uv;
@@ -12,6 +12,7 @@ out vec4 out_color;
 
 // Params
 uniform float Time;
+uniform samplerCube Skybox;
 uniform sampler2D Texture;
 
 #include shapes.glsl
@@ -43,7 +44,8 @@ void main()
     }
     else
     {
-        color = texture2D(Texture, vert_uv).rgb;
+        //color = texture2D(Texture, vert_uv).rgb;
+        color = textureCube(Skybox, -rd).rgb;
     }
 
     // Assign result

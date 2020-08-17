@@ -32,20 +32,25 @@ class Window:
         self.prog = programs.load(prog_desc)
 
         # Load textures
-        texture_list = [("lab.jpg", "Texture")]
+        texture_list = [
+            (TextureDescription("lab.png"), "Texture"),
+            (TextureDescription(kind="cube", 
+                pos_x="right.png", pos_y="up.png", pos_z="front.png",
+                neg_x="left.png", neg_y="down.png", neg_z="back.png"), "Skybox")
+            ]
         idx = 0
-        for filename, name in texture_list:
-            tex = textures.load(TextureDescription(filename))
+        for descriptor, name in texture_list:
             param = self.prog.get(name, None)
             if param is not None:
                 # Assign texture to slot
                 idx += 1
+                tex = textures.load(descriptor)
                 tex.use(idx)
                 # Assign slot to sampler
                 param.value = idx
-                logging.info(f"assigned texture '{filename}' to '{name}'")
+                logging.info(f"assigned '{name}' texture")
             else:
-                logging.warn(f"skipping unused texture '{filename}'")
+                logging.warn(f"skipping unused '{name}'")
 
 
         # Vertices
