@@ -1,0 +1,10 @@
+glcontext==2.2.0
+glfw==1.12.0
+moderngl==5.6.1
+moderngl-window==2.2.3
+multipledispatch==0.6.0
+numpy==1.19.1
+Pillow==7.2.0
+pyglet==1.5.7
+pyrr==0.10.3
+six==1.15.0
