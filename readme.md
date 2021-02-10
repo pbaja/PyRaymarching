@@ -1,3 +1,7 @@
+<p align="center">
+<img align="center" width="50%" src="preview.png">
+</p>
+
 # PyRaymarching
 This is me tinkering with Raymarching for fun. This is just a playground and i am not planning to maintain it. Have fun!  
   
